@@ -75,12 +75,23 @@ class Library {
                 .toList();
     }
 
-//    // 8. Übung
-//    public Map<Book, Long> getLoanCountPerBook() {}
-//
-//    // 9. Übung
-//    public List<Book> getBooksLoanedByAuthor(Author author) {}
-//
+    // 8. Übung
+    public Map<Book, Long> getLoanCountPerBook() {
+        return loans.stream()
+                .map(Loan::getBook)
+                .collect(Collectors.groupingBy(book -> book, Collectors.counting()));
+    }
+
+    // 9. Übung
+    public List<Book> getBooksLoanedByAuthor(Author author) {
+        return loans.stream()
+                .flatMap(loan -> loan.getBook().getAuthors().stream()
+                        .map(auth -> new AbstractMap.SimpleEntry<>(loan.getBook(), auth)))
+                .filter(book -> book.getValue().equals(author))
+                .map(Map.Entry::getKey)
+                .toList();
+    }
+
 //    // 10. Übung
 //    public double getAverageLoanDuration() {}
 //

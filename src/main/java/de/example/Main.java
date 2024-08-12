@@ -54,6 +54,8 @@ public class Main {
 //        System.out.println(library.filterBooksByPageCount(0, 300));
 //        System.out.println(library.getOldestAuthor().get().getName());
 //        System.out.println(library.getBooksByTitleKeyword("The"));
-        System.out.println(library.getMostLoanedBooks());
+//        System.out.println(library.getMostLoanedBooks());
+//        System.out.println(library.getLoanCountPerBook());
+//        System.out.println(library.getBooksLoanedByAuthor(author1));
     }
 }
