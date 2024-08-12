@@ -57,5 +57,6 @@ public class Main {
 //        System.out.println(library.getMostLoanedBooks());
 //        System.out.println(library.getLoanCountPerBook());
 //        System.out.println(library.getBooksLoanedByAuthor(author1));
+        System.out.println(library.getAverageLoanDuration());
     }
 }

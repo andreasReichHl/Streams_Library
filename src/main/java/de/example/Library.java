@@ -92,8 +92,12 @@ class Library {
                 .toList();
     }
 
-//    // 10. Übung
-//    public double getAverageLoanDuration() {}
+    // 10. Übung
+    public OptionalDouble getAverageLoanDuration() {
+        return loans.stream()
+                .mapToInt(loan -> Math.toIntExact(loan.getDurationBetweenDates()))
+                .average();
+    }
 //
 //    // Bonus: 11. Übung
 //    public String getMostPopularAuthorByBorrowedBooksCount() {}
