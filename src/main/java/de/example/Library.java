@@ -98,8 +98,20 @@ class Library {
                 .mapToInt(loan -> Math.toIntExact(loan.getDurationBetweenDates()))
                 .average();
     }
-//
-//    // Bonus: 11. Übung
-//    public String getMostPopularAuthorByBorrowedBooksCount() {}
+
+
+    // Bonus: 11. Übung
+    public String getMostPopularAuthorByBorrowedBooksCount() {
+        return loans.stream()
+                .flatMap(book -> book.getBook().getAuthors().stream()
+                        .map(author -> new AbstractMap.SimpleEntry<>(
+                                author, book.getBook())))
+                .collect(Collectors.groupingBy(Map.Entry::getKey, Collectors.counting()))
+                .entrySet().stream()
+                .max(Comparator.comparing(Map.Entry::getValue))
+                .map(Map.Entry::getKey)
+                .toString();
+
+    }
 
 }
